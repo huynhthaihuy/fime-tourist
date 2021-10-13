@@ -1,0 +1,17 @@
+.Cards{
+    background-color: rgb(228, 230, 233);
+    height: 100%
+}
+.Card__Divider--text{
+    margin-top: 10%;
+}
+.Cards__Divider{
+    margin-top: 30%;
+}
+.Cards__Content{
+    background-color: #fff;
+}
+.Cards__Table{
+    margin-top: 10%;
+    width: 100%;
+}
