@@ -14,7 +14,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Cart } from "@components";
 import { Cards } from "@components";
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 
 function Dashboard() {
   const [state, setState] = React.useState({
@@ -25,7 +25,6 @@ function Dashboard() {
       collapsed: !state.collapsed,
     });
   };
-
   return (
     <Router>
       <Layout>
