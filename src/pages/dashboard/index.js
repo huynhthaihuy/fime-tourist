@@ -19,7 +19,7 @@ import {
 import {Cart} from "@components";
 
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 
 function Dashboard() {
 
@@ -78,6 +78,7 @@ function Dashboard() {
                             </Route>
                         </Switch>
                     </Content>
+                    <Footer style={{ textAlign: "center" }}>Ant Design ©2018 Created by Ant UED</Footer>
                 </Layout>
             </Layout>
         </Router>
