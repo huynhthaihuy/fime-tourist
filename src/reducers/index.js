@@ -1,3 +1,6 @@
 import { combineReducers } from "redux";
-const rootReducer = combineReducers({});
+import  checkoutReducers  from "./checkoutReducers";
+const rootReducer = combineReducers({
+    checkoutReducers: checkoutReducers,
+});
 export default rootReducer;

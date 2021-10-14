@@ -8,6 +8,7 @@ import {
     ShoppingOutlined,
 } from "@ant-design/icons";
 import "./index.css";
+import Checkout from "../checkout";
 import SubMenu from "antd/lib/menu/SubMenu";
 
 import {
@@ -68,13 +69,11 @@ function Dashboard() {
                                 <Cart />
                             </Route>
                             <Route path="/cards">
-                                
                             </Route>
                             <Route path="/checkout">
-                                
+                            <Checkout />
                             </Route>
-                            <Route path="/shop">
-                                
+                            <Route path="/shop"> 
                             </Route>
                         </Switch>
                     </Content>
