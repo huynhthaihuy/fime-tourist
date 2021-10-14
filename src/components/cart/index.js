@@ -2,10 +2,13 @@ import React from "react";
 import "./index.css";
 import { Row, Col, Input, Button, Divider } from "antd";
 import { CartItem } from "@components";
+import { useHistory } from "react-router-dom";
 
 
+function Cart(props) {
+    let history = useHistory();
+    const {setActiveSubMenu} = props;
 
-function Cart() {
     const [dataCart, setDataCart] = React.useState([
         {
             name: "3DR - Propellers for 3DR Solo Drones (2-Pack) - Black",
@@ -40,6 +43,11 @@ function Cart() {
             total: "14.95",
         },
     ]);
+
+    const handleOnClickBtnCheckOut = ()=>{
+        setActiveSubMenu("3");
+        history.push("/checkout");
+    };
     const getTotal = (arr) => {
         const a = arr.reduce((cur, val) => {
             return +cur + parseFloat(val.total);
@@ -82,7 +90,7 @@ function Cart() {
                 </Col>
                 <Col span={3}>
                     <strong>{
-                        getTotal(dataCart)
+                        "$"+getTotal(dataCart)
                     }</strong>
                 </Col>
             </Row>
@@ -94,7 +102,7 @@ function Cart() {
                     <Button className="btn" size="large" ><strong>Apply</strong></Button>
                 </Col>
                 <Col span={3}>
-                    <Button type="primary" size="large" className="btn"><strong>Checkout</strong></Button>
+                    <Button type="primary" size="large" onClick={handleOnClickBtnCheckOut} className="btn"><strong>Checkout</strong></Button>
                 </Col>
             </Row>
         </div>

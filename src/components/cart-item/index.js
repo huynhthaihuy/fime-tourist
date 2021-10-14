@@ -1,12 +1,12 @@
 import React from "react";
 import { Row, Col, InputNumber } from "antd";
-
+import {CloseCircleOutlined} from "@ant-design/icons";
 function CartItem(props) {
     const {item, handleChangeQuantity, handleOnClickDelete} = props;
 
     return (
         <Row justify="space-around" align="middle" className="row">
-            <Col span={1}><span onClick={handleOnClickDelete}>✖</span></Col>
+            <Col span={1}><span onClick={handleOnClickDelete}><CloseCircleOutlined /></span></Col>
             <Col span={2}><img className="img" src={item.src} alt="" /></Col>
             <Col span={11} className="col col__align--left">
                 <Row>
