@@ -1,59 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.css";
 import { Row, Col, Input, Button, Divider } from "antd";
 import { CartItem } from "@components";
 import { useHistory } from "react-router-dom";
-
+import { cartActions } from "@actions";
+import { useDispatch, useSelector } from "react-redux";
+const { getItem } = cartActions;
 
 function Cart(props) {
-    let history = useHistory();
-    const {setActiveSubMenu} = props;
-
-    const [dataCart, setDataCart] = React.useState([
-        {
-            name: "3DR - Propellers for 3DR Solo Drones (2-Pack) - Black",
-            description: "3D Robotics Propellers for Solo Drones: Buy this set of replacement propellers before you need them so you can get back to flying as soon as you damage or lose a propeller. The 1-piece design of these propellers keeps them secure during flight, self-tightening so you can install them in an instant and return to in-air fun.",
-            src: "https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-xanh-duong-new-2-600x600.jpg",
-            price: "14.95",
-            quantity: 1,
-            total: "14.95",
-        },
-        {
-            name: "3DR - Propellers for 3DR Solo Drones (2-Pack) - Black",
-            description: "3D Robotics Propellers for Solo Drones: Buy this set of replacement propellers before you need them so you can get back to flying as soon as you damage or lose a propeller. The 1-piece design of these propellers keeps them secure during flight, self-tightening so you can install them in an instant and return to in-air fun.",
-            src: "https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-xanh-duong-new-2-600x600.jpg",
-            price: "14.95",
-            quantity: 1,
-            total: "14.95",
-        },
-        {
-            name: "3DR - Solo Smart Rechargeable Battery - Black",
-            description: "3D Robotics Battery for Solo Drones: Instead of waiting for your lone battery to recharge, get back to flying right away with this rechargeable battery for Solo drones. The battery can power your drone for up to 25 minutes with no camera attached, or 20 minutes carrying a camera.",
-            src: "https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-xanh-duong-new-2-600x600.jpg",
-            price: "149.5",
-            quantity: 1,
-            total: "149.5",
-        },
-        {
-            name: "3DR - Propellers for 3DR Solo Drones (2-Pack) - Black",
-            description: "3D Robotics Propellers for Solo Drones: Buy this set of replacement propellers before you need them so you can get back to flying as soon as you damage or lose a propeller. The 1-piece design of these propellers keeps them secure during flight, self-tightening so you can install them in an instant and return to in-air fun.",
-            src: "https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-xanh-duong-new-2-600x600.jpg",
-            price: "14.95",
-            quantity: 1,
-            total: "14.95",
-        },
-    ]);
-
-    const handleOnClickBtnCheckOut = ()=>{
+    const { setActiveSubMenu } = props;
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const { cartItems, isDeleteItemSuccess } = useSelector(state => state.cartReducer);
+    const getTotal = (arr) => {
+        const a = arr?.reduce((cur, val) => {
+            return +cur + parseFloat(val.total);
+        }, 0);
+        return a?.toFixed(2);
+    };
+    const handleOnClickBtnCheckOut = () => {
+        const sum = getTotal(cartItems.data);
+        dispatch(cartActions.postTotalPrice(sum));
         setActiveSubMenu("3");
         history.push("/checkout");
     };
-    const getTotal = (arr) => {
-        const a = arr.reduce((cur, val) => {
-            return +cur + parseFloat(val.total);
-        }, 0);
-        return a.toFixed(2);
-    };
+    React.useEffect(() => {
+        dispatch(getItem());
+    }, [isDeleteItemSuccess]);
+
     return (
         <div>
             <Row justify="space-around" align="middle">
@@ -65,17 +39,16 @@ function Cart(props) {
                 <Col span={3}><strong>Total</strong></Col>
             </Row>
             <Divider />
-            {dataCart.map((item, index) => {
+            {cartItems.data?.map((item, index) => {
                 const handleChangeQuantity = (value) => {
-                    let temp = [...dataCart];
-                    temp[index].quantity = value;
-                    temp[index].total = (parseFloat(temp[index].price) * temp[index].quantity).toFixed(2);
-                    setDataCart(temp);
+                    let temp = item;
+                    temp.quantity = value;
+                    temp.total = (parseFloat(temp.price) * temp.quantity).toFixed(2);
+                    dispatch(cartActions.updateQuantityItem(temp));
                 };
                 const handleOnClickDelete = () => {
-                    let temp = [...dataCart];
-                    temp.splice(index, 1);
-                    setDataCart(temp);
+                    console.log("click");
+                    dispatch(cartActions.deleteCartItem(item));
                 };
                 return (<CartItem item={item}
                     handleChangeQuantity={handleChangeQuantity}
@@ -90,7 +63,7 @@ function Cart(props) {
                 </Col>
                 <Col span={3}>
                     <strong>{
-                        "$"+getTotal(dataCart)
+                        "$" + getTotal(cartItems.data)
                     }</strong>
                 </Col>
             </Row>

@@ -17,10 +17,12 @@ import {
     Link
 } from "react-router-dom";
 import {Cart} from "@components";
+import { useDispatch } from "react-redux";
 
 const { Header, Sider, Content, Footer } = Layout;
 
 function Dashboard() {
+    
     
     const [state, setState] = React.useState({
         collapsed: false,
@@ -33,7 +35,7 @@ function Dashboard() {
 
     // active selected menu
     const [activeSubMenu,setActiveSubMenu] = React.useState("1");
-    
+   
     return (
         <Router>
             <Layout>
