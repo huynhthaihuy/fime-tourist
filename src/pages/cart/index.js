@@ -5,7 +5,20 @@ import { CartItem } from "@components";
 import { useHistory } from "react-router-dom";
 import { cartActions } from "@actions";
 import { useDispatch, useSelector } from "react-redux";
+
+// import { firestore } from "@library";
+
+
 const { getItem } = cartActions;
+
+// const initItem = {
+//     src: "https://cdn-demo.algolia.com/bestbuy/4494401_sb.jpg",
+//     name : "Amazon - Case for Amazon Fire 7\" Tablets - Black",
+//     description : "Protect your Amazon Fire 7\" tablet from scratches and bumps on the go with this slim Amazon B00ZGUYN1Q case, which features a full-coverage design with polyurethane and microfiber materials for durability. The built-in stand enables hands-free viewing.",
+//     price : "15",
+//     quantity : 1,
+//     total : "15",
+//   };
 
 function Cart(props) {
     const { setActiveSubMenu } = props;
@@ -18,11 +31,19 @@ function Cart(props) {
         }, 0);
         return a?.toFixed(2);
     };
+
+    // const pushData = async () =>{
+    //     const res = await firestore.firestore().collection("cartList").add(initItem);
+    //     console.log(res);
+    // };
+
     const handleOnClickBtnCheckOut = () => {
         const sum = getTotal(cartItems.data);
         dispatch(cartActions.postTotalPrice(sum));
         setActiveSubMenu("3");
         history.push("/checkout");
+
+        // pushData();
     };
     React.useEffect(() => {
         dispatch(getItem());
@@ -48,8 +69,9 @@ function Cart(props) {
                     dispatch(cartActions.updateQuantityItem(temp));
                 };
                 const handleOnClickDelete = () => {
-                    console.log("click");
-                    dispatch(cartActions.deleteCartItem(item));
+                    const temp = item;
+                    temp.isDeleteItemSuccess = !isDeleteItemSuccess;
+                    dispatch(cartActions.deleteCartItem(temp));
                 };
                 return (<CartItem item={item}
                     handleChangeQuantity={handleChangeQuantity}
