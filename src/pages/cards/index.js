@@ -1,15 +1,12 @@
 import { Form, Button, Col, Divider, Modal, Row, Input, Image } from "antd";
 import Text from "antd/lib/typography/Text";
-import React, { useState, Component, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
-import { Table, Tag, Space } from "antd";
+import { Table, Space } from "antd";
 import { Content } from "antd/lib/layout/layout";
 import { AppleFilled } from "@ant-design/icons";
 import { cardActions } from "@actions";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { db } from "../../library/firestore/firebase";
-import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 const INITIAL_CARD_NUMBER = "**** **** **** ****";
 const MAX_CARD_NUMBER_LENGTH = 16;
@@ -132,8 +129,6 @@ const Cards = (props) => {
     setActiveSubMenu("4");
     // getData();
   }, [isDeleteCardSuccess, isAddCardSuccess]);
-
-
   return (
     <div className="cards">
       <Divider orientation="left" className="cards__Divider">

@@ -1,11 +1,18 @@
 import React from "react";
-import { Table } from "antd";
-
+import { Skeleton, Table } from "antd";
+import { useSelector } from "react-redux";
+import "./index.css";
 const OrderInfo = () => {
     const columns = [{
             title: "Product",
-            dataIndex: "product",
             key: "product",
+            dataIndex: "name",
+            render: (text, record) => {
+                return (
+                    <span>{text} x {record.quantity}</span>
+                );
+                
+            }
         },
         {
             title: "Total",
@@ -13,38 +20,20 @@ const OrderInfo = () => {
             key: "total",
         },
     ];
-
-    const data = [{
-            key: "1",
-            product: "John Brown",
-            age: 32,
-            address: "New York No. 1 Lake Park",
-            tags: ["nice", "developer"],
-        },
-        {
-            key: "2",
-            name: "Jim Green",
-            age: 42,
-            address: "London No. 1 Lake Park",
-            tags: ["loser"],
-        },
-        {
-            key: "3",
-            name: "Joe Black",
-            age: 32,
-            address: "Sidney No. 1 Lake Park",
-            tags: ["cool", "teacher"],
-        },
-    ];
+    const { totalPrice, cartItems } = useSelector(state => state.cartReducer);
     return (
-        <Table columns={columns} dataSource={data} pagination={false} summary={() => (
+        <div className="order-info">
+{!cartItems && <Skeleton /> }
+{!!cartItems && 
+        <Table columns={columns} dataSource={cartItems?.data || []}  pagination={false} summary={() => (
             <Table.Summary fixed>
               <Table.Summary.Row>
-                <Table.Summary.Cell index={0}>Summary</Table.Summary.Cell>
-                <Table.Summary.Cell index={1}>This is a summary content</Table.Summary.Cell>
+                <Table.Summary.Cell index={0}>Total</Table.Summary.Cell>
+                <Table.Summary.Cell index={1}>{totalPrice.data}</Table.Summary.Cell>
               </Table.Summary.Row>
             </Table.Summary>
-          )}/>
+          )} /> }
+          </div>
     );
 };
 export default OrderInfo;

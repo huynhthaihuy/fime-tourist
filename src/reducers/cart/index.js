@@ -21,6 +21,7 @@ function cartReducer(state = initState, action) {
             return {
                 ...state,
                 cartItems: action.payload,
+                isGetItemSuccess : true,
             };
         }
         case cartActions.GET_ITEM_FAIL: {

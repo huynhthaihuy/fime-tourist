@@ -23,7 +23,6 @@ const cardReducer = (state = initialState, action) => {
       };
     }
     case cardActions.GET_CARD_SUCCESS: {
-      console.log(action.payload, "action.payload");
       return {
         ...state,
         isGetCardSuccess: true,

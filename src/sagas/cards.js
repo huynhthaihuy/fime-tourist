@@ -10,7 +10,6 @@ const getDocuments = async (collectionName) => {
       querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
     );
 };
-
 function* fetchCardRequest() {
   try {
     const data = yield call(getDocuments, "cardInfo");
