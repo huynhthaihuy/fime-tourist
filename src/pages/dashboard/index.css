@@ -3,6 +3,8 @@
     font-size: 18px;
     line-height: 64px;
     cursor: pointer;
+    width: 10%;
+    margin-right: auto;
     transition: color 0.3s;
   }
   

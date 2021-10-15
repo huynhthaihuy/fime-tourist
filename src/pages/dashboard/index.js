@@ -18,12 +18,13 @@ import {
     Link
 } from "react-router-dom";
 import {Cart} from "@components";
+import { useDispatch } from "react-redux";
 
-
-const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 
 function Dashboard() {
-
+    
+    
     const [state, setState] = React.useState({
         collapsed: false,
     });
@@ -33,6 +34,9 @@ function Dashboard() {
         });
     };
 
+    // active selected menu
+    const [activeSubMenu,setActiveSubMenu] = React.useState("1");
+   
     return (
         <Router>
             <Layout>
@@ -41,12 +45,12 @@ function Dashboard() {
                     <div className="logo">
 
                     </div>
-                    <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+                    <Menu theme="dark" mode="inline" selectedKeys={[activeSubMenu]}>
                         <SubMenu key="sub1" icon={<ShoppingOutlined />} title="Ecommerce">
-                            <Menu.Item key="1"><Link to="/shop">Shop</Link></Menu.Item>
-                            <Menu.Item key="2"><Link to="/cart">Cart</Link></Menu.Item>
-                            <Menu.Item key="3"><Link to="/checkout">Checkout</Link></Menu.Item>
-                            <Menu.Item key="4"><Link to="/cards">Cards</Link></Menu.Item>
+                            <Menu.Item key="1" onClick={() =>setActiveSubMenu("1")} ><Link to="/shop">Shop</Link></Menu.Item>
+                            <Menu.Item key="2" onClick={() =>setActiveSubMenu("2")}><Link to="/cart">Cart</Link></Menu.Item>
+                            <Menu.Item key="3" onClick={() =>setActiveSubMenu("3")}><Link to="/checkout">Checkout</Link></Menu.Item>
+                            <Menu.Item key="4" onClick={() =>setActiveSubMenu("4")}><Link to="/cards">Cards</Link></Menu.Item>
                         </SubMenu>
                     </Menu>
                 </Sider>
@@ -66,7 +70,7 @@ function Dashboard() {
                     >
                         <Switch>
                             <Route path="/cart">
-                                <Cart />
+                                <Cart setActiveSubMenu={setActiveSubMenu} />
                             </Route>
                             <Route path="/cards">
                             </Route>
@@ -77,6 +81,7 @@ function Dashboard() {
                             </Route>
                         </Switch>
                     </Content>
+                    <Footer style={{ textAlign: "center" }}>Ant Design ©2018 Created by Ant UED</Footer>
                 </Layout>
             </Layout>
         </Router>
