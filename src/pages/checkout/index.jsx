@@ -8,9 +8,15 @@ import "./index.css";
 const {
     saveBillInfo
   } = checkoutActions;
-const Checkout = () => {
+const Checkout = (props) => {
+    const {setActiveSubMenu} = props;
     const [form] = useForm();
     const dispatch = useDispatch();
+
+    React.useEffect(()=>{
+        setActiveSubMenu("3");
+    },[]);
+
     const onHandleSubmit = (value) => {
         dispatch(saveBillInfo(value));
     };

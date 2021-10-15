@@ -16,7 +16,9 @@ const MAX_CARD_NUMBER_LENGTH = 16;
 const INITTIAL_CARD_NAME = "YOUR NAME HERE";
 const INITTIAL_CARD_VALID = "**/**";
 
-const Cards = () => {
+const Cards = (props) => {
+  const {setActiveSubMenu} = props;
+
   const columns = [
     {
       title: "Number",
@@ -127,13 +129,10 @@ const Cards = () => {
 
   useEffect(() => {
     dispatch(cardActions.getCardRequest());
-
+    setActiveSubMenu("4");
     // getData();
   }, [isDeleteCardSuccess, isAddCardSuccess]);
 
-  useEffect(() => {
-    console.log(cards, "???cards");
-  }, [cards]);
 
   return (
     <div className="cards">
