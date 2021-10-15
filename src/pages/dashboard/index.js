@@ -9,6 +9,7 @@ import {
 } from "@ant-design/icons";
 import "./index.css";
 import Checkout from "../checkout";
+import Cart from "../cart";
 import SubMenu from "antd/lib/menu/SubMenu";
 
 import {
@@ -17,7 +18,6 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import {Cart} from "@components";
 import { useDispatch } from "react-redux";
 
 const { Header, Sider, Content, Footer } = Layout;

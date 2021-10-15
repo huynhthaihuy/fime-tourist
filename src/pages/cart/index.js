@@ -26,6 +26,7 @@ function Cart(props) {
     };
     React.useEffect(() => {
         dispatch(getItem());
+        setActiveSubMenu("2");
     }, [isDeleteItemSuccess]);
 
     return (
