@@ -76,7 +76,9 @@ function Dashboard() {
               <Route path="/checkout">
                 <Checkout setActiveSubMenu={setActiveSubMenu} />
               </Route>
-              <Route path="/shop"></Route>
+              <Route path="/shop">
+                <Shop setActiveSubMenu={setActiveSubMenu} />
+              </Route>
             </Switch>
           </Content>
           <Footer style={{ textAlign: "center" }}>

@@ -1,11 +1,14 @@
 import React from "react";
 import "./index.css";
 import { Row } from "antd";
-import {ShopSlider, ShopContent} from "@components";
+import { ShopSlider, ShopContent } from "@components";
 
 
-const Shop = () => {
-    
+const Shop = (props) => {
+    const { setActiveSubMenu } = props;
+    React.useEffect(() => {
+        setActiveSubMenu("1");
+    }, []);
     return (
         <Row className="flex-box">
             <ShopSlider />
@@ -14,4 +17,4 @@ const Shop = () => {
     );
 };
 
-export default  Shop;
+export default Shop;

@@ -17,7 +17,7 @@ const INITTIAL_CARD_NAME = "YOUR NAME HERE";
 const INITTIAL_CARD_VALID = "**/**";
 
 const Cards = (props) => {
-  const {setActiveSubMenu} = props;
+  const { setActiveSubMenu } = props;
 
   const columns = [
     {
