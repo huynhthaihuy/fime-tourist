@@ -1,0 +1,11 @@
+.place-order__button {
+    padding: 0.5rem;
+    height: fit-content;
+    margin-top: 1rem; 
+}
+.bill-info__container .ant-space {
+    width: 100% !important;
+}
+.bill-info__container .ant-space-item {
+    width: 100% !important;
+}
