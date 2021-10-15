@@ -3,7 +3,6 @@ import { firestore } from "@library";
 import { cartActions } from "@actions";
 
 
-
 function* updateCartIntoFiresStore({ payload }) {
     try {
         const { data } = payload;

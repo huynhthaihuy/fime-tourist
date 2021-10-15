@@ -1,0 +1,4 @@
+.order-info .ant-table-thead>tr>th {
+    color: black;
+    background: white !important;
+}

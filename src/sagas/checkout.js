@@ -15,7 +15,6 @@ function* storeIntoFirestore({ payload }) {
     yield put(checkoutActions.saveBillInfoSuccess(data));
   }
 }
-
 function* getOrderItem() {
   try { 
     const payload = [];
