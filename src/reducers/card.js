@@ -3,6 +3,7 @@ const initialState = {
   isLoading: false,
   isGetCardSuccess: false,
   isDeleteCardSuccess: false,
+  isAddCardSuccess: false,
   cards: [],
   card: {
     id: "",
@@ -44,7 +45,7 @@ const cardReducer = (state = initialState, action) => {
     case cardActions.ADD_CARD_SUCCESS: {
       return {
         ...state,
-        isLoading: true,
+        isAddCardSuccess: action.payload,
       };
     }
     case cardActions.ADD_CARD_FAIL: {
@@ -61,7 +62,7 @@ const cardReducer = (state = initialState, action) => {
     case cardActions.DELETE_CARD_SUCCESS: {
       return {
         ...state,
-        isDeleteCardSuccess: true,
+        isDeleteCardSuccess: action.payload,
       };
     }
     case cardActions.DELETE_CARD_FAIL: {

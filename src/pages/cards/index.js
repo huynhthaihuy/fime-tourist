@@ -66,10 +66,15 @@ const Cards = () => {
   };
 
   const handledelete = (id) => {
-    dispatch(cardActions.deleteCard(id));
+    const temp = {
+      id: id,
+      isDeleteCardSuccess: !isDeleteCardSuccess,
+    };
+    dispatch(cardActions.deleteCard(temp));
   };
 
   const handleOk = async () => {
+    const temp = { isAddCardSuccess: !isAddCardSuccess, ...formData };
     dispatch(cardActions.addCard(formData));
     setIsModalVisible(false);
   };
@@ -120,15 +125,11 @@ const Cards = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  useEffect(
-    () => {
-      dispatch(cardActions.getCardRequest());
+  useEffect(() => {
+    dispatch(cardActions.getCardRequest());
 
-      // getData();
-    },
-    [isDeleteCardSuccess],
-    [isAddCardSuccess]
-  );
+    // getData();
+  }, [isDeleteCardSuccess, isAddCardSuccess]);
 
   useEffect(() => {
     console.log(cards, "???cards");
