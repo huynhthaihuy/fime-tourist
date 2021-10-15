@@ -1,27 +1,27 @@
 {
     "parserOptions": {
-    "ecmaVersion": 2021,
-      "ecmaFeatures": {
+    "ecmaVersion": 2021,//phiên bản cú pháp
+      "ecmaFeatures": {   //các tính năng ngôn ngữ muốn bổ sung
         "jsx": true,
         "js" :true
       },
-      "sourceType": "module"
+      "sourceType": "module" //dùng khi mã của bạn nằm trong module ECMAscript
     },
   
-    "settings": {
+    "settings": { //check version
       "react": {
         "version": "detect"
       }
     },
   
-    "plugins": [
+    "plugins": [ //thêm vào plugin
       "react",
       "jest"
     ],
-    "env": { 
+    "env": {  //thông báo eslint về môi trường jest
         "jest/globals": true
       },
-      "extends": [
+      "extends": [ //xuất cấu hình thực thi
         "plugin:jest/recommended"
       ],
     "rules": {
