@@ -1,8 +1,8 @@
 import React from "react";
 import "./index.css";
 import { Row } from "antd";
-import ShopSlider from "./ShopSlider";
-import ShopContent from "./ShopContent";
+import {ShopSlider, ShopContent} from "@components";
+
 
 const Shop = () => {
     

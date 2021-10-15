@@ -1,19 +1,19 @@
 import { all, takeEvery, put } from "redux-saga/effects";
-import { shopActions } from "@actions";
+import { checkoutActions } from "@actions";
 import { firestore } from "@library";
 
-const COLLECTION_NAME = "ShopItem";
+const COLLECTION_NAME = "billInfo";
 
 function* storeIntoFirestore({ payload }) {
   const { data } = payload;
   try {
     yield firestore.firestore().collection(COLLECTION_NAME).add(data);
   } catch (error) {
-    yield put(shopActions.addToCartError(error));
+    yield put(checkoutActions.saveBillInfoError(error));
   }
 }
-export default function* shopSaga() {
+export default function* checkoutSaga() {
   yield all([
-    takeEvery(shopActions.ADD_TO_CART, storeIntoFirestore)
+    takeEvery(checkoutActions.SAVE_BILL_INFO, storeIntoFirestore)
   ]);
 }
