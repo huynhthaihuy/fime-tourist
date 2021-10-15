@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./index.css";
 import { Row, Col, Input, Button, Divider } from "antd";
 import { CartItem } from "@components";
