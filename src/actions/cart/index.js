@@ -28,11 +28,14 @@ const cartActions = {
         type: cartActions.DELETE_ITEM,
         payload: { data }
     }),
-    deleteCartItemSuccess: () => ({
+    deleteCartItemSuccess: (data) => ({
         type: cartActions.DELETE_ITEM_SUCCESS,
+        payload: {data}
     }),
-    deleteCartItemFail: () => ({
+    deleteCartItemFail: (data) => ({
         type: cartActions.DELETE_ITEM_FAIL,
+        payload: {data}
+
     }),
     updateQuantityItem: (data) => ({
         type: cartActions.UPDATE_QUANTITY_ITEM,

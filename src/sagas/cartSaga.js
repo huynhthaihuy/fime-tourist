@@ -20,7 +20,6 @@ function* updateCartIntoFiresStore({ payload }) {
 
 function* getListCartItemFromFiresStore() {
     try {
-
         const payload = [];
         const data = yield firestore.firestore().collection("cartList").get();
         data.forEach(doc => {
@@ -37,7 +36,7 @@ function* deleteCartItemFromFiresStore({ payload }) {
     try {
         const { data } = payload;
         yield firestore.firestore().collection("cartList").doc(data.id).delete();
-        yield put(cartActions.deleteCartItemSuccess());
+        yield put(cartActions.deleteCartItemSuccess(data.isDeleteItemSuccess));
     } catch (error) {
         yield put(cartActions.updateCartQuantityError(error));
     }
