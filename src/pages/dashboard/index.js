@@ -17,7 +17,7 @@ import {
     Link
 } from "react-router-dom";
 import {Cart} from "@components";
-
+import {Shop} from "@components";
 
 const { Header, Sider, Content } = Layout;
 
@@ -74,7 +74,7 @@ function Dashboard() {
                                 
                             </Route>
                             <Route path="/shop">
-                                
+                                <Shop />
                             </Route>
                         </Switch>
                     </Content>
