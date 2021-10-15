@@ -1,0 +1,58 @@
+.cards{
+    background-color: rgb(228, 230, 233);
+    height: 40px;
+}
+.cards__divider__text{
+    margin-top: 10%;
+}
+.cards__content{
+    background-color: #fff;
+}
+.cards__table{
+    margin-top: 3%;
+    width: 100%;
+}
+
+
+.card {
+    position: relative;
+    width: 290px;
+    height: 180px;
+    background: #999;
+    border-radius: 10px;
+}
+
+.card__number {
+    position: absolute;
+    left: 10%;
+    top: 40%;
+    font-size: 22px;
+    color:rgb(228, 230, 233);
+}
+.card__name{
+    position: absolute;
+    left: 10%;
+    top:70%;
+    font-size: 15px;
+    color:rgb(228, 230, 233);
+}
+.card__valid{
+    position: absolute;
+    left: 70%;
+    top: 70%;
+    font-size:15px;
+    color:rgb(228, 230, 233);
+}
+.card__text{
+    position: absolute;
+    left: 68%;
+    font-size:12px;
+    top: 60%;
+    color:rgb(228, 230, 233);
+}
+.card__icon{
+    position: absolute;
+    left:10%;
+    font-size: 40px;
+    top:5%;
+}
