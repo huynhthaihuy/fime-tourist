@@ -24,7 +24,7 @@ function* addCardItemFromFiresStore({ payload }) {
   const { data } = payload;
   try {
     yield firestore.firestore().collection("cardInfo").add(data);
-    yield put(cardActions.addCardSuccess(data));
+    yield put(cardActions.addCardSuccess(data.isAddCardSuccess));
   } catch (error) {
     yield put(cardActions.addCardFailure(error));
   }
@@ -33,8 +33,8 @@ function* addCardItemFromFiresStore({ payload }) {
 function* deleteCardItemFromFiresStore({ payload }) {
   try {
     const { data } = payload;
-    yield firestore.firestore().collection("cardInfo").doc(data).delete();
-    yield put(cardActions.deleteCardSuccess());
+    yield firestore.firestore().collection("cardInfo").doc(data.id).delete();
+    yield put(cardActions.deleteCardSuccess(data.isDeleteCardSuccess));
   } catch (error) {
     yield put(cardActions(error));
   }
