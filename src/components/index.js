@@ -1,6 +1,5 @@
 import CartItem from "./cart-item";
 import OrderInfo from "./order_info";
-export {
-    OrderInfo,
-    CartItem,
-};
+import ShopContent from "./shopContent";
+import ShopSlider from "./shopSlider";
+export { OrderInfo, CartItem,ShopSlider,ShopContent };

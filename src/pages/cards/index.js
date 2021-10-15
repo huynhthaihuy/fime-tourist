@@ -1,22 +1,21 @@
 import { Form, Button, Col, Divider, Modal, Row, Input, Image } from "antd";
 import Text from "antd/lib/typography/Text";
-import React, { useState, Component, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
-import { Table, Tag, Space } from "antd";
+import { Table, Space } from "antd";
 import { Content } from "antd/lib/layout/layout";
 import { AppleFilled } from "@ant-design/icons";
 import { cardActions } from "@actions";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { db } from "../../library/firestore/firebase";
-import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 const INITIAL_CARD_NUMBER = "**** **** **** ****";
 const MAX_CARD_NUMBER_LENGTH = 16;
 const INITTIAL_CARD_NAME = "YOUR NAME HERE";
 const INITTIAL_CARD_VALID = "**/**";
 
-const Cards = () => {
+const Cards = (props) => {
+  const { setActiveSubMenu } = props;
+
   const columns = [
     {
       title: "Number",
@@ -66,10 +65,15 @@ const Cards = () => {
   };
 
   const handledelete = (id) => {
-    dispatch(cardActions.deleteCard(id));
+    const temp = {
+      id: id,
+      isDeleteCardSuccess: !isDeleteCardSuccess,
+    };
+    dispatch(cardActions.deleteCard(temp));
   };
 
   const handleOk = async () => {
+    const temp = { isAddCardSuccess: !isAddCardSuccess, ...formData };
     dispatch(cardActions.addCard(formData));
     setIsModalVisible(false);
   };
@@ -120,19 +124,11 @@ const Cards = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  useEffect(
-    () => {
-      dispatch(cardActions.getCardRequest());
-
-      // getData();
-    },
-    [isDeleteCardSuccess],
-    [isAddCardSuccess]
-  );
-
   useEffect(() => {
-  }, [cards]);
-
+    dispatch(cardActions.getCardRequest());
+    setActiveSubMenu("4");
+    // getData();
+  }, [isDeleteCardSuccess, isAddCardSuccess]);
   return (
     <div className="cards">
       <Divider orientation="left" className="cards__Divider">

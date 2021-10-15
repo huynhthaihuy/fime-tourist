@@ -11,8 +11,10 @@ import "./index.css";
 import Checkout from "../checkout";
 import Cart from "../cart";
 import SubMenu from "antd/lib/menu/SubMenu";
+import Shop from "../shop";
 import Cards from "../cards";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 const { Header, Sider, Content, Footer } = Layout;
 
 function Dashboard() {
@@ -69,12 +71,14 @@ function Dashboard() {
                 <Cart setActiveSubMenu={setActiveSubMenu} />
               </Route>
               <Route path="/cards">
-                <Cards />
+                <Cards setActiveSubMenu={setActiveSubMenu} />
               </Route>
               <Route path="/checkout">
-                <Checkout />
+                <Checkout setActiveSubMenu={setActiveSubMenu} />
               </Route>
-              <Route path="/shop"></Route>
+              <Route path="/shop">
+                <Shop setActiveSubMenu={setActiveSubMenu} />
+              </Route>
             </Switch>
           </Content>
           <Footer style={{ textAlign: "center" }}>

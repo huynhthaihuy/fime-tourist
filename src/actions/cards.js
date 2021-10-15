@@ -38,8 +38,9 @@ const cardActions = {
     type: cardActions.DELETE_CARD,
     payload: { data },
   }),
-  deleteCardSuccess: () => ({
+  deleteCardSuccess: (data) => ({
     type: cardActions.DELETE_CARD_SUCCESS,
+    payload: { data },
   }),
   deleteCardFailure: () => ({
     type: cardActions.DELETE_CARD_FAIL,
