@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./index.css";
 import { Row, Col, Input, Button, Divider } from "antd";
 import { CartItem } from "@components";
@@ -31,12 +31,6 @@ function Cart(props) {
         }, 0);
         return a?.toFixed(2);
     };
-
-    // const pushData = async () =>{
-    //     const res = await firestore.firestore().collection("cartList").add(initItem);
-    //     console.log(res);
-    // };
-
     const handleOnClickBtnCheckOut = () => {
         const sum = getTotal(cartItems.data);
         dispatch(cartActions.postTotalPrice(sum));

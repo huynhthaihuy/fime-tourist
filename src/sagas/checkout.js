@@ -15,22 +15,21 @@ function* storeIntoFirestore({ payload }) {
     yield put(checkoutActions.saveBillInfoSuccess(data));
   }
 }
-function* getOrderItem() {
-  try { 
-    const payload = [];
-     yield firestore.firestore().collection("cartList").get().then((querySnapshot) => {
-       querySnapshot.docs.forEach((doc) => {
-         payload.push(doc.data());
-       });
-     });
-     yield put(checkoutActions.getOrderItemSuccess(payload));
+
+function* deleteAllCart() {
+  try {
+    yield firestore.firestore().collection("cartList").get().then(querySnapshot => {
+      querySnapshot.docs.forEach(snapshot => {
+          snapshot.ref.delete();
+      });
+  });
   } catch (error) {
-    yield put(checkoutActions.getOrderItemError(error));
   }
 }
+
 export default function* checkoutSaga() {
   yield all([
     takeEvery(checkoutActions.SAVE_BILL_INFO, storeIntoFirestore),
-    takeEvery(checkoutActions.GET_ORDER_ITEM, getOrderItem)
+    takeEvery(checkoutActions.SAVE_SUCCESS_AND_PUSH_NOTI, deleteAllCart),
   ]);
 }
