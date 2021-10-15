@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Form, Select, Input, Space } from "antd";
 import "./index.css";
@@ -5,7 +6,7 @@ import "./index.css";
 
 
 const { Option } = Select;
-const BillForm = () => {
+const BillForm = ({ isLoading }) => {
   return (
     <div className="bill-info__container">
       <Space>
@@ -21,7 +22,7 @@ const BillForm = () => {
           name="lastname"
           rules={[{ required: true, message: "Please input your last name!" }]}
         >
-          <Input size="large" />
+          <Input disabled={isLoading} size="large" />
         </Form.Item>
       </Space>
       <Space>
@@ -30,24 +31,24 @@ const BillForm = () => {
           name="companyName"
           rules={[{ required: true, message: "Please input Company name" }]}
         >
-          <Input size="large" />
+          <Input disabled={isLoading} size="large" />
         </Form.Item>
       </Space>
       <Space>
         <Form.Item
           label="Email Address"
           name="email"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          rules={[{ required: true, message: "Please input your email address!" }]}
         >
-          <Input size="large" />
+          <Input disabled={isLoading} size="large" />
         </Form.Item>
 
         <Form.Item
           label="Mobile No"
           name="mobile"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[{ required: true, message: "Please input your mobile number!" }]}
         >
-          <Input size="large" />
+          <Input disabled={isLoading} size="large" />
         </Form.Item>
       </Space>
       <Space>
@@ -56,7 +57,7 @@ const BillForm = () => {
           name="country"
           rules={[{ required: true, message: "Please input your username!" }]}
         >
-          <Select size="large">
+          <Select disabled={isLoading} size="large">
             <Option value="argentina">Argentina</Option>
             <Option value="australia">Australia</Option>
             <Option value="brazil">Brazil</Option>
@@ -73,17 +74,17 @@ const BillForm = () => {
           name="city"
           rules={[{ required: true, message: "Please input your password!" }]}
         >
-          <Input size="large" />
+          <Input disabled={isLoading} size="large" />
         </Form.Item>
       </Space>
       <Form.Item
         label="Address"
         rules={[{ required: true, message: "Please input your password!" }]}>
         <Form.Item name="addressCity">
-          <Input size="large" />
+          <Input disabled={isLoading} size="large" />
         </Form.Item>
         <Form.Item name="detailAdrress">
-          <Input size="large" />
+          <Input disabled={isLoading} size="large" />
         </Form.Item>
       </Form.Item>
     </div>

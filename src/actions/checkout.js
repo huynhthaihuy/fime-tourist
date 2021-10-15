@@ -5,6 +5,7 @@ const checkoutActions = {
   GET_ORDER_ITEM_ERROR: "GET_ORDER_ITEM_ERROR",
   SAVE_BILL_INFO: "SAVE_BILL_INFO",
   SAVE_BILL_INFO_ERROR: "SAVE_BILL_INFO_ERROR",
+  SAVE_BILL_INFO_SUCCESS: "SAVE_BILL_INFO_SUCCESS",
 
   getOrderItem: () => {
     return { type: checkoutActions.GET_ORDER_ITEM };
@@ -28,6 +29,10 @@ const checkoutActions = {
   saveBillInfoError: error => ({
     type: checkoutActions.SAVE_BILL_INFO_ERROR,
     payload: { error },
+  }),
+  saveBillInfoSuccess: data => ({
+    type: checkoutActions.SAVE_BILL_INFO_SUCCESS,
+    payload: { data },
   }),
 };
 export default checkoutActions;
