@@ -9,6 +9,7 @@ import { cardActions } from "@actions";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { db } from "../../library/firestore/firebase";
+import { useHistory } from "react-router-dom";
 
 const INITIAL_CARD_NUMBER = "**** **** **** ****";
 const MAX_CARD_NUMBER_LENGTH = 16;
@@ -50,7 +51,9 @@ const Cards = () => {
       ),
     },
   ];
-  const cards = useSelector((state) => state.cardModels.cards);
+  const { cards, isDeleteCardSuccess, isAddCardSuccess } = useSelector(
+    (state) => state.cardModels
+  );
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [cardNumber, setCardNumber] = useState(INITIAL_CARD_NUMBER);
   const [cardName, setCardName] = useState(INITTIAL_CARD_NAME);
@@ -67,12 +70,8 @@ const Cards = () => {
   };
 
   const handleOk = async () => {
-    // console.log(formData);
-    const id = addData();
-    if (id) {
-      getData();
-      setIsModalVisible(false);
-    }
+    dispatch(cardActions.addCard(formData));
+    setIsModalVisible(false);
   };
 
   const handleCancel = () => {
@@ -121,35 +120,15 @@ const Cards = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const getData = async () => {
-    const ref = db.collection("cardInfo");
+  useEffect(
+    () => {
+      dispatch(cardActions.getCardRequest());
 
-    const snapshot = await ref.get();
-
-    let data = [];
-    snapshot.forEach((doc) => {
-      data = [...data, { ...doc.data(), id: doc.id }];
-    });
-
-    console.log(data);
-
-    // setCards(data);
-  };
-
-  const addData = async () => {
-    const res = await db.collection("cardInfo").add(formData);
-    return res?.id;
-  };
-
-  // const delData = async () => {
-  //   const res = await db.collection("cardInfo").doc().delete();
-  //   return res?.id;
-  // };
-  useEffect(() => {
-    dispatch(cardActions.getCardRequest());
-
-    // getData();
-  }, []);
+      // getData();
+    },
+    [isDeleteCardSuccess],
+    [isAddCardSuccess]
+  );
 
   useEffect(() => {
     console.log(cards, "???cards");

@@ -16,7 +16,6 @@ const initialState = {
 const cardReducer = (state = initialState, action) => {
   switch (action.type) {
     case cardActions.GET_CARD_REQUEST: {
-      // todo
       return {
         ...state,
         isLoading: true,
@@ -35,6 +34,23 @@ const cardReducer = (state = initialState, action) => {
         ...state,
         isGetCardSuccess: false,
         cards: [],
+      };
+    }
+    case cardActions.ADD_CARD: {
+      return {
+        ...state,
+      };
+    }
+    case cardActions.ADD_CARD_SUCCESS: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case cardActions.ADD_CARD_FAIL: {
+      return {
+        ...state,
+        isloading: false,
       };
     }
     case cardActions.DELETE_CARD: {

@@ -1,37 +1,41 @@
 {
-    "parserOptions": {
-    "ecmaVersion": 2021,//phiên bản cú pháp
-      "ecmaFeatures": {   //các tính năng ngôn ngữ muốn bổ sung
-        "jsx": true,
-        "js" :true
-      },
-      "sourceType": "module" //dùng khi mã của bạn nằm trong module ECMAscript
-    },
+    // "parserOptions": {
+    // "ecmaVersion": 2021,//phiên bản cú pháp
+    //   "ecmaFeatures": {   //các tính năng ngôn ngữ muốn bổ sung
+    //     "jsx": true,
+    //     "js" :true
+    //   },
+    //   "sourceType": "module" //dùng khi mã của bạn nằm trong module ECMAscript
+    // },
   
-    "settings": { //check version
-      "react": {
-        "version": "detect"
-      }
-    },
+    // "settings": { //check version
+    //   "react": {
+    //     "version": "detect"
+    //   }
+    // },
   
-    "plugins": [ //thêm vào plugin
-      "react",
-      "jest"
-    ],
-    "env": {  //thông báo eslint về môi trường jest
-        "jest/globals": true
-      },
-      "extends": [ //xuất cấu hình thực thi
-        "plugin:jest/recommended"
-      ],
+    // "plugins": [ //thêm vào plugin
+    //   "react",
+    //   "jest"
+    // ],
+    // "env": {  //thông báo eslint về môi trường jest
+    //     "jest/globals": true
+    //   },
+    //   "extends": [ //xuất cấu hình thực thi
+    //     "plugin:jest/recommended"
+    //   ],
     "rules": {
         "semi": ["error", "always"],
         "quotes": ["error", "double"],
-      "react/jsx-no-bind": ["error", {
-        "allowArrowFunctions": true,
-        "allowBind": false,
-        "ignoreRefs": true
-      }],
+        "no-unused-vars": "off" ,
+        "@typescript-eslint/no-unused-vars": "off",
+        "react/jsx-no-duplicate-props": "off",
+        "react-hooks/exhaustive-deps": "off",
+      // "react/jsx-no-bind": ["error", {
+      //   "allowArrowFunctions": true,
+      //   "allowBind": false,
+      //   "ignoreRefs": true
+      // }],
       "react/no-did-update-set-state": "error",
       "react/no-unknown-property": "error",
       "react/react-in-jsx-scope": "error"

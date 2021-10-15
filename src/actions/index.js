@@ -1,5 +1,5 @@
+import cartActions from "./cart";
 import cardActions from "./cards";
+import checkoutActions from "./checkout";
 
-export {
-    cardActions
-};
+export { cartActions, checkoutActions, cardActions };
