@@ -11,6 +11,7 @@ import "./index.css";
 import Checkout from "../checkout";
 import Cart from "../cart";
 import SubMenu from "antd/lib/menu/SubMenu";
+import Shop from "../shop";
 import Cards from "../cards";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
