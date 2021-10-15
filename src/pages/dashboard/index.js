@@ -13,8 +13,6 @@ import Cart from "../cart";
 import SubMenu from "antd/lib/menu/SubMenu";
 import Cards from "../cards";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-
 const { Header, Sider, Content, Footer } = Layout;
 
 function Dashboard() {
