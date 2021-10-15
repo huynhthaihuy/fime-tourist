@@ -38,13 +38,13 @@ function cartReducer(state = initState, action) {
         case cartActions.DELETE_ITEM_SUCCESS: {
             return {
                 ...state,
-                isDeleteItemSuccess: true,
+                isDeleteItemSuccess: action.payload,
             };
         }
         case cartActions.DELETE_ITEM_FAIL: {
             return {
                 ...state,
-                isDeleteItemSuccess: false,
+                isDeleteItemSuccess: action.payload,
             };
         }
         case cartActions.UPDATE_QUANTITY_ITEM: {
